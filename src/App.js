@@ -8,8 +8,15 @@ const App = () =>{
   return (
    <div className='app-main'>
     <Routes>
-      <Route path="/home" element={<Home />} />
-      <Route path="/todolist" element={<Todolist />} />
+      <Route path="/home">
+        <Home/>
+      </Route>
+      <Route path="/todolist">
+        <Todolist/>
+      </Route>
+      <Route path="/" >
+        <Home/>
+      </Route>
     </Routes>
    </div>
   )

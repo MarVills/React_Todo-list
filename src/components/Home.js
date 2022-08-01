@@ -2,7 +2,10 @@ import React from 'react'
 
 const Home = () =>{
   return(
-    <div>You are Home!</div>
+    <div className='home-main'>
+      <h1>Welcome to my Todolist</h1>
+      <button>Start</button>
+    </div>
   )
 }
 

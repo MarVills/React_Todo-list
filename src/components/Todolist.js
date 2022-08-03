@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import TodoItem from './TodoItem'
 
 const Todolist = () =>{
+  // ==========================================================
 
   const [state, setState] = useState({
     todo: '',
@@ -12,45 +13,50 @@ const Todolist = () =>{
     editIndex: '',
   })
   const [isUpdate, setIsUpdate] = useState(false)
-  
+  // =================================================================
+
   const {todo, todolist} = state
   const {editTodo, editIndex} = edit
+  // ==================================================================
 
   const handleOnChangeEdit = (e) => {
     const { name, value } = e.target
 
-    setEdit({...state, [name]: value})
+    setEdit({...edit, [name]: value})
   }
   const handleOnChange = (e) => {
     const { name, value } = e.target
 
     setState({...state, [name]: value})
   }
+  // ============================================================
 
-  const handleOnClickEdit = (index) => {
+  const handleOnClickEdit = (index, value) => {
     setIsUpdate(true)
-    setEdit({...state, editIndex: index})
+    setEdit({editTodo: value, editIndex: index})
   }
+
   const handleOnClickCancel = () => {
     setIsUpdate(false)
   }
+
   const createTodo = () => {
     const list = todolist
     list.push(todo)
-
     setState({todo: '', todolist: list})
   }
+
   const deleteTodo = (index) => {
     const list = todolist
     list.splice(index, 1)
-
     setState({todo: '', todolist: list})
   }
+
   const updateTodo = (index) =>{
     const list = todolist
     list[index] = editTodo
-
     setState({...state, todolist: list})
+    setIsUpdate(false)
   }
   
   return(
@@ -84,7 +90,8 @@ const Todolist = () =>{
         }
         {
           isUpdate ? 
-          <div className='form-wrapper'>
+          <div className='form-wrapper2'>
+            <span>Index:{editIndex}</span>
             <input 
             type='text' 
             name='editTodo'
